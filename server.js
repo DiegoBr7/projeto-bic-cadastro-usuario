@@ -49,6 +49,31 @@ app.post("/login" , (req,res) =>{
     }
 });
 
+
+// ____________________________________________________________________________________
+
+let producoes = [];
+
+app.get("/producao" , (req,res) =>{
+    res.render("producao" , {producoes})
+})
+
+app.post("/producao" , (req,res) =>{
+    const {id , email , custo , tempo  } = req.body
+    console.log(" Producao : " , id , email , custo , tempo)
+
+const novaProducao = {id , email , custo , tempo };
+producoes.push(novaProducao);
+
+console.log("Producao cadastrada " , novaProducao);
+
+res.render("producao" , {producoes})
+
+})
+
+
+
+
 app.listen(PORT , () =>{
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 })

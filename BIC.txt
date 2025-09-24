@@ -1,0 +1,17 @@
+id
+nome 
+tempo de producao 
+custo de produco
+
+setores (talvez foreign key)
+
+
+tabela de indexacao (tabela relacional)
+
+
+Item(foreign key)
+data_de_inicio
+previsao
+quantidade
+funcionario
+status_atual 
