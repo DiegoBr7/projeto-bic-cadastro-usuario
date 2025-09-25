@@ -72,7 +72,24 @@ res.render("producao" , {producoes})
 })
 
 
+// ____________________________________________________________________________________
 
+let itens = [];
+
+app.get("/item", (req,res) =>{
+    res.render("item" , {itens} )
+} )
+
+app.post("/item" , (req,res)=>{
+const {id , nome , data_inicio , previsao  , quantidade , funcionario , status } = req.body
+
+const novoItem = { id ,nome , data_inicio , previsao  , quantidade , funcionario , status };
+itens.push(novoItem);
+
+console.log("Novos Itens cadastrados" , novoItem)
+
+   res.render("item" , {itens})
+})
 
 app.listen(PORT , () =>{
     console.log(`Servidor rodando em http://localhost:${PORT}`);

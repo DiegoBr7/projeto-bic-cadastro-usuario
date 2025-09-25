@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="flex justify-center items-center h-screen bg-indigo-600">
+        <div class="w-full max-w-2xl p-6 shadow-lg bg-white rounded-md">
+            <h1 class="text-3xl block text-center font-semibold"><i class="fa-solid fa-user"></i>Tabela Itens</h1>
+            <hr class="mt-3">
+            <div class="mt-3">
+                <form action="/item" method="post">
+
+                    <div class="id">
+                        <label class="block text-base mb-2" for="id">ID do Item</label>
+                        <input
+                            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            type="number" name="id" id="id" placeholder="Insira o número do Item" required>
+                    </div>
+ 
+                    <div class="nome">
+                        <label class="block text-base mb-2" for="nome">Nome do Item</label>
+                        <input
+                            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            type="text" name="nome" id="nome" placeholder="Insira o nome do Item" required>
+                    </div>
+
+                    <div class="data mt-3">
+                        <label class="block text-base mb-2" for="data_inicio">Data de Inicio</label>
+                        <input
+                            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            type="date" name="data_inicio" id="data_inicio" placeholder="Insira a data" required>
+                    </div>
+
+                    <div class="tempo mt-3">
+                        <label class="block text-base mb-2" for="previsao">Previsão</label>
+                        <input
+                            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            type="date" name="previsao" id="previsao" placeholder="Ex: 25/05/2025" required>
+                    </div>
+
+                    <div class="custo mt-3">
+                        <label class="block text-base mb-2" for="custo">Quantidade</label>
+                        <input
+                            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            type="number" step="1" name="quantidade" id="quantidade" placeholder="Ex: 15" required>
+                    </div>
+
+                    <div class="custo mt-3">
+                        <label class="block text-base mb-2" for="custo">Funcionario</label>
+                        <input
+                            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            type="text" name="funcionario" id="funcionario" placeholder="nome do funcionário" required>
+                    </div>
+                    
+                    <div class="custo mt-3">
+                        <label class="block text-base mb-2" for="custo">Status</label>
+                        <input
+                            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            type="text" name="status" id="status" placeholder="status" required>
+                    </div>
+
+                    <div class="mt-5">
+                        <button
+                            class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold"
+                            type="submit">Salvar Item</button>
+                    </div>
+                </form>
+
+            </div>
+            <% if (itens && itens.length> 0) { %>
+
+              <div class="mt-6 overflow-x-auto">
+                  <h2 class=" text-xl font-semibold mt-6 ">Itens cadastrados</h2>
+
+                <table class="w-full border border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-indigo-200">
+                            <th class="p-2 border text-left ">ID</th>
+                            <th class="p-2 border text-left ">NOME</th>
+                            <th class="p-2 border text-left ">DATA INICIO</th>
+                            <th class="p-2 border text-left ">PREVISAO</th>
+                            <th class="p-2 border text-left ">QUANTIDADE</th>
+                            <th class="p-2 border text-left ">FUNCIONARIO</th>
+                            <th class="p-2 border text-left ">STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% itens.forEach(i=> { %>
+
+                            <tr class=" hover:bg-gray-50 " >
+                                <td class="p-2 border">
+                                    <%= i.id %>
+                                </td>
+
+                                <td class="p-2 border truncate max-w-xs ">
+                                    <%= i.nome %>
+                                </td>
+                                <td class="p-2 border">
+                                    <%= i.data_inicio %>
+                                </td>
+                                <td class="p-2 border">
+                                    <%= i.previsao %>
+                                </td>
+                                <td class="p-2 border">
+                                    <%= i.quantidade %>
+                                </td>
+                                <td class="p-2 border truncate max-w-xs">
+                                    <%= i.funcionario %>
+                                </td>
+ 
+                                <td class="p-2 border">
+                                    <%= i.status %>
+                                </td>
+
+                            </tr>
+
+                            <% }) %>
+
+                    </tbody>
+                </table>
+              </div>
+                <% } %>
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
